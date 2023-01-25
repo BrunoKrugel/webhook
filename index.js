@@ -1,6 +1,8 @@
 // create an express app
-const express = require("express");
-const bodyParser = require("body-parser");
+import express from "express";
+import bodyParser from "body-parser";
+import updateProduct from "./src/dao.js";
+
 const app = express();
 
 app.use(bodyParser.json());
@@ -14,13 +16,14 @@ app.get("/", function (req, res) {
 });
 
 app.post("/hook", (req, res) => {
-  let data = {
-    "product_id": req.body.Product.product_id,
-    "product_name": req.body.Product.product_name,
-    "date": req.body.created_at,
-  }
-  console.log(data); // Call your action on the request here
   res.status(200).end(); // Responding is important
+  let data = {
+    product_id: req.body.Product.product_id,
+    product_name: req.body.Product.product_name,
+    date: req.body.created_at.slice(0, 10),
+  };
+  updateProduct(data);
+  //console.log(data); // Call your action on the request here
 });
 
 // start the server listening for requests
