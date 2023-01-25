@@ -5,8 +5,8 @@ async function updateProduct(data) {
     clientPromise
       .then((client) => {
         client
-          .db("campaign")
-          .collection("campaign")
+          .db("kiwify")
+          .collection("product_sales")
           .updateOne(
             {
               product_id: data.product_id,
