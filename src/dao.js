@@ -10,6 +10,7 @@ async function updateProduct(data) {
           .updateOne(
             {
               product_id: data.product_id,
+              store_id: data.store_id,
               date: data.date,
               product_name: data.product_name,
             },

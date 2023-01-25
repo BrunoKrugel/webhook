@@ -19,6 +19,7 @@ app.post("/hook", (req, res) => {
   res.status(200).end(); // Responding is important
   let data = {
     product_id: req.body.Product.product_id,
+    store_id: req.body.store_id,
     product_name: req.body.Product.product_name,
     date: req.body.created_at.slice(0, 10),
   };
