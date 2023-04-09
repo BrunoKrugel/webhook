@@ -25,10 +25,10 @@ app.get("/", function (req, res) {
 });
 
 app.post("/hook", (req, res) => {
-  res.status(200).end();
+  console.log(req.body);
+  res.status(200).json(req.body).end();
 
   let data = {};
-  console.log(req.body);
   // if (req.body.hasOwnProperty("Product")) {
   //   data.product_id = req.body.Product.product_id;
   //   data.product_name = req.body.Product.product_name;
