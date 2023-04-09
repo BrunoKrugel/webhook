@@ -1,23 +1,16 @@
 import clientPromise from "./db.js";
 
-async function updateProduct(data) {
+async function updateLog(data) {
   return new Promise((resolve, reject) => {
     clientPromise
       .then((client) => {
         client
-          .db("kiwify")
-          .collection("product_sales")
+          .db("kiwify-pro")
+          .collection("log")
           .updateOne(
             {
-              product_id: data.product_id,
-              store_id: data.store_id,
-              date: data.date,
-              product_name: data.product_name,
-            },
-            {
-              $inc: {
-                sales_number: 1,
-              },
+              date: new Date(),
+              log: data,
             },
             { upsert: true },
             function (err, result) {
@@ -37,4 +30,4 @@ async function updateProduct(data) {
   });
 }
 
-export default updateProduct;
+export default updateLog;
