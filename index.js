@@ -1,7 +1,7 @@
 // create an express app
 import express from "express";
 import bodyParser from "body-parser";
-import updateProduct from "./src/dao.js";
+import updateLog from "./src/dao.js";
 
 const app = express();
 
