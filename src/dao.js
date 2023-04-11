@@ -7,12 +7,11 @@ async function updateLog(data) {
         client
           .db("kiwify-pro")
           .collection("log")
-          .updateOne(
+          .insertOne(
             {
               date: new Date(),
               log: data,
             },
-            { upsert: true },
             function (err, result) {
               if (err || !result) {
                 console.log(err);
