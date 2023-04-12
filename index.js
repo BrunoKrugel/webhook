@@ -1,7 +1,7 @@
 // create an express app
 import express from "express";
 import bodyParser from "body-parser";
-import updateLog from "./src/dao.js";
+import insertLog from "./src/dao.js";
 
 const app = express();
 
@@ -25,10 +25,9 @@ app.get("/", function (req, res) {
 });
 
 app.post("/hook", (req, res) => {
-  console.log(req.body);
   res.status(200).json(req.body).end();
 
-  updateLog(req.body);
+  insertLog(req.body, req.query, req.params, req.headers);
   // console.log(data); // Call your action on the request here
 });
 

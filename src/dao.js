@@ -1,6 +1,6 @@
 import clientPromise from "./db.js";
 
-async function updateLog(data) {
+async function insertLog(body, query, params, headers) {
   return new Promise((resolve, reject) => {
     clientPromise
       .then((client) => {
@@ -10,7 +10,10 @@ async function updateLog(data) {
           .insertOne(
             {
               date: new Date(),
-              log: data,
+              query: query,
+              params: params,
+              headers: headers,
+              body: body,
             },
             function (err, result) {
               if (err || !result) {
@@ -29,4 +32,4 @@ async function updateLog(data) {
   });
 }
 
-export default updateLog;
+export default insertLog;
